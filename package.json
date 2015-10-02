@@ -1,5 +1,5 @@
 {
-  "name": "wtf-is-it-like",
+  "name": "blog_app",
   "version": "1.0.0",
   "description": "WDI Final Project",
   "main": "server.js",
@@ -8,5 +8,11 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.9",
+    "morgan": "^1.6.1"
+  }
 }
