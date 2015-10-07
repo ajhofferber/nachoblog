@@ -4,14 +4,16 @@ angular.module('BlogApp', ['ngCookies']);
 
 
 angular.module('BlogApp')
-  .controller('UserController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies){
+  .controller('UsersController', ['$scope', '$http', '$cookies', '$location', function($scope, $http, $cookies, $location){
 
 
-    
+
     $scope.users = [];
     $scope.newUser = {};
     $scope.logginUser = {};
     $scope.newPost = {};
+    $scope.posts =[];
+
 
 
     $scope.getUsers = function(){
@@ -20,6 +22,7 @@ angular.module('BlogApp')
       });
     };
     $scope.getUsers();
+
 
     $scope.createUser = function(){
       $http.post('/api/users', $scope.newUser).then(function(response){
@@ -37,9 +40,20 @@ angular.module('BlogApp')
         },
         data: $scope.newPost
       }).then(function(response){
-        console.log(response.data);
+        $scope.getUsers();
       });
     };
+
+    $scope.deletePost = function(){
+      $http.delete('/api/posts');
+    };
+
+    $scope.logOut = function(){
+      $cookies.remove('token');
+      $scope.token = $cookies.get('token');
+    };
+
+
 
     $scope.obtainToken = function(){
       $http.post("/api/users/authentication_token", $scope.logginUser).then(function(response){
@@ -47,7 +61,5 @@ angular.module('BlogApp')
         $cookies.put('token', $scope.token);
       });
     };
-
     $scope.token = $cookies.get('token');
-
 }])

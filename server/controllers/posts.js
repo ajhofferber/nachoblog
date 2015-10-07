@@ -3,6 +3,16 @@ var express  =  require('express'),
     User     =  require('../models/user'),
     postsRouter   =  express.Router();
 
+// 
+// postsRouter.get('/', function (req, res) {
+//   User.find({}, function (err, users)
+//     for (var i = 0; i < users.length; i++) {
+//       users[i].posts
+//     }
+//     res.json(results);
+//   });
+// });
+
 
 postsRouter.post('/', function(req, res){
   //find the user by the token

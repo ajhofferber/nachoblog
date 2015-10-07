@@ -1,8 +1,8 @@
 //Require what will be needed for the controller
-var express  =  require('express'),
-    mongoose =    require('mongoose'),
-    User     =  require('../models/user'),
-    postsRouter   =  express.Router();
+var mongoose    =    require('mongoose'),
+    randToken   =    require('rand-token'),
+    bcrypt      =    require('bcrypt-nodejs');
+
 
 
 

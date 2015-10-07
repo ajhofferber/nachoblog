@@ -32,6 +32,14 @@ var express     =    require('express'),
       res.sendFile(__dirname + '/client/views/new.html');
     });
 
+    app.get('/about', function(req, res){
+      res.sendFile(__dirname + '/client/views/about.html');
+    });
+
+    app.get('/login', function(req, res){
+      res.sendFile(__dirname + '/client/views/login.html');
+    });
+
     // *** Routing/Controllers ***
     var UsersController = require('./server/controllers/users');
     app.use('/api/users', UsersController);
@@ -41,6 +49,6 @@ var express     =    require('express'),
 
 
     // *** Start Listening... ***
-    app.listen(8080, function(){
+    app.listen(8081, function(){
       console.log("BOOM SHAKALAKA");
     });

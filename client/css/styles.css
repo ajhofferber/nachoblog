@@ -1,7 +1,7 @@
 body{
   background-color: whitesmoke;
   color: dimgrey;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Pacifico', cursive;
   padding: 5%;
   font-size: 16px;
 }
@@ -18,12 +18,29 @@ h3{
 }
 
 h4{
-  font-size: 1.75em;
+  font-size: 1.5em;
   text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 p{
   font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.sign-up{
+  text-align: left;
+}
+
+.creds{
+  margin-top: 2%;
+  margin-right: 2%;
+  display: inline-block;
+}
+
+
+.cred-stuff{
+  display: inline;
+  font-size: 1.25em;
 }
 
 #wrapper{
@@ -38,17 +55,11 @@ p{
   float: right;
   left: 30%;
   width: 70%;
-  height: 100%;
+  height: 90%;
 }
 
 #left-column{
   position: fixed;
-}
-
-.links{
-  padding: 2%;
-  color: gold;
-  font-size: 20px;
 }
 
 #navbar{
@@ -57,10 +68,32 @@ p{
   padding-top: 2%;
   display: block;
   background-color: whitesmoke;
-  height: 100px;
+  height: 175px;
   color: hotpink;
-  text-align: center;
-  width: 100%;
+  width: 70%;
+}
+
+input[type="submit"]{
+  font-size: .60em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  padding: 0px 1%;
+  border: 1px solid hotpink;
+}
+
+#post[type="submit"]{
+  padding: 1%;
+  height: 30px;
+  width: 60px;
+  border-radius: 25px;
+  line-height: .5em;
+}
+
+#logout{
+  margin-right: 5%;
+  float: right;
 }
 
 #recipes-list{
@@ -70,4 +103,8 @@ p{
 
 .logo{
   width: 100%;
+}
+
+.new-post{
+  text-align: center;
 }

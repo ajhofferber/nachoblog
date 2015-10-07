@@ -1,21 +1,81 @@
 <!DOCTYPE html>
-<html ng-app="MEANApp">
+<html ng-app="BlogApp">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js" charset="utf-8"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>BLOGGIN</title>
   </head>
   <body>
-    <h1>Nachos & Margs</h1>
-    <div id="navbar" class="row">
-        <a class="links" href="/about">About</a> <a class="links" href="/login">Contributors</a> <a href="/signup" class="links">Join Us!</a>
+    <section ng-controller='UsersController'>
+      <div class="row">
+        <div id="left-column" class="three columns">
+          <img class="logo" src="/images/cutenacho.png"></img> <h1>Nachos<br>&<br>Margs</h1></br>
+          <h4>"NACHO" ordinary food blog</h4>
+        </div>
+        <div id="wrapper" class="nine columns">
+          <div id="main-content">
+            <div id="navbar" class="row">
+              <div ng-hide="token" class="creds sign-up">
+                <h3 class ='cred-stuff'>Sign Up:</h3>
+                <form class ='cred-stuff' ng-submit="createUser()">
+                  <input type="text" ng-model="newUser.username" placeholder="Username">
+                  <input type="password" ng-model="newUser.password" placeholder="Password">
+                  <input class ='cred-button' type="submit">
+                </form>
+              </div>
+              <div ng-hide="token" class="creds log-in">
+                <h3 class ='cred-stuff'>Log In:</h3>
+                <form class ='cred-stuff' ng-submit="obtainToken()">
+                  <input type="text" ng-model="logginUser.username" placeholder="Username">
+                  <input type="password" ng-model="logginUser.password" placeholder="Password">
+                  <input class ='cred-button' type="submit">
+                </form>
+              </div>
+              <div ng-show="token" class="new-post">
+                <form id="logout" ng-submit="logOut()" ng-show="token">
+                  <input type="submit" value="Log Out">
+                </form>
+                <form ng-submit="createPost()">
+                  <input id="title" ng-model="newPost.title" type="text" placeholder="Recipe Name">
+                  <input id="date" ng-model="newPost.date" type="text" placeholder="Date"></br>
+                  <textarea ng-model="newPost.body" type="text" cols="100" rows="15" placeholder="Recipe Here!"></textarea><br>
+                  <input id='post' type="submit">
+                </form>
+              </div>
+            </div>
+
+          <div id='recipes-list' class="row">
+            <section class='posts'>
+              <span ng-repeat="user in users">
+                <div class="post" ng-repeat="post in user.posts">
+                  <h3>{{ post.title }}</h3>
+                  <p>
+                    by {{ user.username }}
+                  </p>
+                  <p>
+                    {{ post.body }}
+                  </p>
+                  <form ng-submit="deletePost()" ng-show="token">
+                    <input type="submit">
+                  </form>
+                </div>
+              </span>
+            </section>
+          </div>
+
+        </div>
       </div>
+    </div>
+    </section>
 
 
-<script src="/js/app.js"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
   </body>
 </html>
