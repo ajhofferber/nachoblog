@@ -19,6 +19,7 @@ angular.module('BlogApp')
     $scope.getUsers = function(){
       $http.get('/api/users').then(function(response){
         $scope.users = response.data;
+        console.log(response.data)
       });
     };
     $scope.getUsers();
@@ -32,6 +33,7 @@ angular.module('BlogApp')
     };
 
     $scope.createPost = function(){
+      $scope.newPost.createdAt = Math.floor(Date.now() / 1000);
       $http({
         url: '/api/posts',
         method: 'post',
@@ -44,9 +46,19 @@ angular.module('BlogApp')
       });
     };
 
-    $scope.deletePost = function(){
-      $http.delete('/api/posts');
+    $scope.deletePost = function(timestamp){
+      $http({
+        url:"api/posts/" + timestamp,
+        method: 'delete',
+        headers:{
+          token: $scope.token
+        }
+      }).then(function(){
+        $scope.getUsers();
+      });
     };
+
+
 
     $scope.logOut = function(){
       $cookies.remove('token');

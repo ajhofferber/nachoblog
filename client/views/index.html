@@ -55,16 +55,17 @@
             <section class='posts'>
               <span ng-repeat="user in users">
                 <div class="post" ng-repeat="post in user.posts">
+                  <form id="delete-button" ng-submit="deletePost(post.createdAt)" ng-show="token">
+                    <input type="submit" value="Delete">
+                  </form>
                   <h3>{{ post.title }}</h3>
                   <p>
-                    by {{ user.username }}
+                    Submitted on {{ post.date }} By {{ user.username }}
                   </p>
                   <p>
                     {{ post.body }}
                   </p>
-                  <form ng-submit="deletePost()" ng-show="token">
-                    <input type="submit">
-                  </form>
+
                 </div>
               </span>
             </section>
