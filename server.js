@@ -11,7 +11,7 @@ var express     =    require('express'),
     var app = express();
 
     // *** Connect to Database ***
-    mongoose.connect('mongodb://localhost/bloggin');
+    mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/bloggin');
 
     // *** Server Logging ***
     app.use(morgan('dev'));
