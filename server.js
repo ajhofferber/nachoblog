@@ -49,6 +49,8 @@ var express     =    require('express'),
 
 
     // *** Start Listening... ***
-    app.listen(8081, function(){
-      console.log("BOOM SHAKALAKA");
+    var port = process.env.PORT || '8080';
+
+    app.listen(port, function(){
+      console.log('BOOM BOOM POW');
     });
