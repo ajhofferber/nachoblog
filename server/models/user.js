@@ -16,7 +16,7 @@ var UserSchema = new mongoose.Schema({
     {
       title: {type: String},
       body: {type: String},
-      date: {type: Date},
+      date: {type: String},
       createdAt: {type: Number}
     }
   ]
